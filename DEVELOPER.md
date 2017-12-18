@@ -1,4 +1,4 @@
-# logstash-input-example
+# logstash-input-mongodb
 Example input plugin. This should help bootstrap your effort to write your own input plugin!
 
 ## Build new gem
@@ -43,4 +43,12 @@ $ ruby test/*
 * Rspec (but it needs mongo on localhost, it would be nice to have it is not depended on local mongo)
 ```bash
 $ ./bin/rspec
+```
+
+5. Install
+
+```sh
+bundle install
+gem build logstash-input-mongodb.gemspec
+logstash-plugin install logstash-input-mongodb-0.4.3.gem
 ```
