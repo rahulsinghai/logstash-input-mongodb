@@ -14,14 +14,14 @@ This was designed for parsing logs that were written into mongodb. This means th
 ### Installation
 
 + Logstash installed from ZIP | TGZ
-  + bin/plugin install /path/to/logstash-input-mongodb-0.4.2.gem
+  + bin/plugin install /path/to/logstash-input-mongodb-0.4.4.gem
 
 + Logstash from GIT
   + git clone https://github.com/elastic/logstash.git
   + cd logstash
   + (ensure that the correct jruby is installed for the version of logstash you are installing)
   + rake test:install-core
-  + bin/plugin install /path/to/logstash-input-mongodb-0.4.2.gem
+  + bin/plugin install /path/to/logstash-input-mongodb-0.4.4.gem
   + bin/plugin install --development
 
 ### Configuration Options
@@ -75,3 +75,7 @@ output {
 The URI parameter is where you would specify all of your mongodb options including things like auth and SSL. You should use a connection string (URI) compatible with the mongodb spec.
 
 For more information on MongoDB URI's please see the MongoDB documentation: https://docs.mongodb.org/v3.0/reference/connection-string/
+
+## Building the plug-in
+
+Check [DEVELOPER.md](./DEVELOPER.md)

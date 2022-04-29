@@ -3,15 +3,50 @@ Example input plugin. This should help bootstrap your effort to write your own i
 
 ## Build new gem
 
-Change version in logstash-input-mongodb.gemspec
+Change version in `logstash-input-mongodb.gemspec`
 
 And build new gem:
 
 ```bash
-$ gem build logstash-input-mongodb.gemspec
+gem build logstash-input-mongodb.gemspec
 ```
 
 ## Developing
+
+### Windows
+
+1. Install JRuby
+2. Set environment variables: `JRUBY_HOME` and `PATH=%JRUBY_HOME%\bin;%PATH%`
+3. Build the plug-in by running following in Powershell as administrator:
+
+   ```bash
+   gem install bundler
+   bundle install
+   bundle exec rspec
+   gem build logstash-input-mongodb.gemspec
+   ```
+
+4. Publish the plug-in to Github
+
+   ```bash
+   echo ":github: Bearer GH_TOKEN" >> C:\users\rahul\.gem\credentials
+   gem push --key github --host https://rubygems.pkg.github.com/rahulsinghai logstash-input-mongodb-0.4.4.gem
+   ```
+
+5. Install the plug-in
+
+   ```bash
+   .\bin\logstash-plugin install logstash-input-mongodb-0.4.4.gem
+   ```
+
+6. Prepare offline pack:
+
+   ```bash
+   .\bin\logstash-plugin update
+   .\bin\logstash-plugin prepare-offline-pack --output logstash-input-mongodb-0.4.4.zip --overwrite logstash-input-mongodb
+   ```
+
+7. Release a new version in Github and upload the .gem & .zip files.
 
 ### Use rvm on Ubuntu
 
@@ -50,5 +85,5 @@ $ ./bin/rspec
 ```sh
 bundle install
 gem build logstash-input-mongodb.gemspec
-logstash-plugin install logstash-input-mongodb-0.4.3.gem
+logstash-plugin install logstash-input-mongodb-0.4.4.gem
 ```
